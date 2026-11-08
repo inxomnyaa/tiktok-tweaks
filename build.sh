@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-VERSION=1.0.0
+VERSION=${VERSION:-0.0.0-dev}
 T=tools
 CLI=$T/morphe-desktop-2.1.1-all.jar
 R8=$T/r8.jar

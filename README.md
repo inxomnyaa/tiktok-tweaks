@@ -31,7 +31,22 @@ To change the options, open **Settings and privacy** in TikTok and tap the pink 
 
 ## Patching
 
-You need Java 17 or newer and your own original TikTok **47.7.1** APK. It has to be a single APK, not a split bundle, and include your phone's CPU type. Other versions will not work, because the patches use TikTok's obfuscated names, which change between releases.
+You need your own original TikTok **47.7.1** APK. It has to be a single APK, not a split bundle, and include your phone's CPU type. Other versions will not work, because the patches use TikTok's obfuscated names, which change between releases.
+
+### In the Morphe app
+
+1. Install [Morphe Manager](https://morphe.software) on your phone.
+2. Add this repo as a patch source, using either way:
+   - Open **[this link](https://morphe.software/add-source?github=inxomnyaa/tiktok-tweaks)** on your phone and confirm.
+   - Or open **Sources** in the bottom bar, tap **+**, stay on **Remote**, paste `github.com/inxomnyaa/tiktok-tweaks` and tap **Add**.
+3. Patch TikTok with your 47.7.1 APK, with **TikTok Tweaks** selected.
+4. Uninstall any TikTok already on your phone, then install the patched app and log in. Uninstalling deletes your drafts.
+
+Added this way, Morphe Manager picks up new releases by itself.
+
+### With the desktop tool
+
+Needs Java 17 or newer.
 
 1. Download `tiktok-tweaks.mpp` from the [latest release](../../releases/latest).
 2. Download the [Morphe desktop tool](https://github.com/MorpheApp/morphe-desktop/releases).
@@ -47,8 +62,6 @@ You need Java 17 or newer and your own original TikTok **47.7.1** APK. It has to
 
 Morphe creates a keystore next to the input APK. Keep it: you need the same key to update without uninstalling again.
 
-The bundle should also load in Morphe Manager as a local patch source, but only the desktop tool has been tested.
-
 ## Building from source
 
 Needs bash, curl, unzip and a JDK 17 or newer:
@@ -59,9 +72,11 @@ Needs bash, curl, unzip and a JDK 17 or newer:
 
 The script downloads the Morphe tool, R8 and `android.jar`, checks their hashes, and writes `dist/tiktok-tweaks.mpp`.
 
+Pushing a change under `extension/`, `patches/` or `stubs/` to `main` builds the bundle and publishes it as a new release automatically.
+
 ## Status
 
-Tested on one phone (Redmi Note 10 Pro).
+Tested on one phone (Redmi Note 10 Pro), patched with the desktop tool. Patching inside the Morphe app has not been tested yet.
 
 - **Confirmed working:** ad removal, feed filters, UI size.
 - **Known issue:** the double-tap heart animation does not show, although the like still registers. The cause is unknown.
